@@ -4,11 +4,12 @@
     .controller('UserSignup', UserSignup);
 
     /* @ngInject */
-    function UserSignup(dataservice, $state, CurrentUser, Notifications) {
+    function UserSignup(dataservice, $state, CurrentUser, Notifications, $ionicHistory) {
       vm = this;
       vm.credentials = {};
       vm.repeatPassword = '';
       vm.signup = signup;
+      vm.goBack = goBack;
 
       //////////////////////////////////////
 
@@ -27,6 +28,11 @@
           .catch(function(err) {
             console.error(err);
           });
+      }
+
+      // NOTE: all this nav functionality are candidates for a nav service 
+      function goBack() {
+        return $ionicHistory.goBack()
       }
     }  
 })();

@@ -4,10 +4,11 @@
     .controller('UserSignin', UserSignin);
 
     /* @ngInject */
-    function UserSignin(dataservice, $state, CurrentUser, Notifications) {
+    function UserSignin(dataservice, $state, CurrentUser, Notifications, $ionicHistory) {
       vm = this;
       vm.credentials = {};      
       vm.signin = signin;
+      vm.goBack = goBack;
 
       //////////////////////////////////////
 
@@ -26,6 +27,11 @@
           .catch(function(err) {
             console.error(err);
           });
+      }
+
+      // NOTE: all this nav functionality are candidates for a nav service 
+      function goBack() {
+        return $ionicHistory.goBack()
       }
     }  
 })();

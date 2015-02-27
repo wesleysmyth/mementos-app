@@ -1,4 +1,8 @@
-<ion-view hide-nav-bar="true">
+<ion-view>
+  <ion-nav-buttons side="primary">
+    <button on-tap="vm.goBack()" class="button button-icon icon">Cancel</button>
+  </ion-nav-buttons>
+  
   <ion-content>
     
     <div class="list">
@@ -19,12 +23,6 @@
       <button class="button button-block button-positive" on-tap="vm.signup(vm.credentials)">
         Sign Up
       </button>
-    </div>
-
-    <div class="card">
-      <div class="item item-text-wrap">
-        <a href="#/signin" class="button icon-right ion-chevron-right button-clear button-dark">Already a member? Signin </a>
-      </div>
     </div>
 
   </ion-content>
