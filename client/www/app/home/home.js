@@ -9,17 +9,19 @@
   function Home($state) {
     /*jshint validthis: true */
     var vm = this;
-    vm.splash = splash;
+    /*vm.splash = splash;*/
+    vm.signUp = signUp;
+    vm.login = login;
 
     activate()
 
     ////////////////////////////////
     
-    function activate() {
-      return splash();
+    function activate($state) {
+      /*return splash();*/
     }
     
-    // NOTE: splash goes to moment page after several seconds
+    /*// NOTE: splash goes to moment page after several seconds
     function splash() {
       setTimeout(function(){
         // FIXME: fade class does not currently exist
@@ -28,6 +30,15 @@
           $state.go('signin');
         }, 400);
       }, 3500);
+    }*/
+
+    function signUp() {
+      return $state.go('signup')
     }
+
+    function login() {
+      return $state.go('signin')
+    }
+
   }
 })();
