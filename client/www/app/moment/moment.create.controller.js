@@ -6,12 +6,13 @@
     .controller('MomentCreate', MomentCreate);
 
   /* @ngInject */
-  function MomentCreate($state, dataservice, CurrentMoment) {
+  function MomentCreate($state, dataservice, CurrentMoment, $ionicHistory) {
     
     /*jshint validthis: true */
     var vm = this;    
     vm.saveMoment = saveMoment;
     vm.currentMoment = new EmptyMoment();
+    vm.goBack = goBack;
       
     //////////////////////////////////////////////////
 
@@ -30,6 +31,10 @@
           // savingError(err);
           console.error('There was an error saving moment:', err);
         });
+    }
+
+    function goBack() {
+      return $ionicHistory.goBack()
     }
 
     function EmptyMoment() {
