@@ -25,7 +25,7 @@
         // FIXME: fade class does not currently exist
         angular.element(document.querySelector('div.home')).addClass('fade');
         setTimeout(function() {
-          $state.go('moment');
+          $state.go('signin');
         }, 400);
       }, 3500);
     }
