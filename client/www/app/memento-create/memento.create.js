@@ -6,32 +6,33 @@
     .controller('MementoCreate', MementoCreate);
 
   /* @ngInject */
-  function MementoCreate($state, dataservice, CurrentMoment) {
+  function MementoCreate($state, dataservice, CurrentMoment, $ionicHistory) {
     /*jshint validthis: true */
     var vm = this;
     vm.title = 'Create Memento';
     vm.currentMemento = new EmptyMemento();
+    vm.currentMoment = {};
     vm.saveMemento = saveMemento;
+    vm.goBack = goBack;
 
     activate();
 
     ////////////////////////////////////////////////////////////
 
     function activate() {
-      var currentMoment = CurrentMoment.get().momentID;
-      vm.currentMemento.moments.push(currentMoment);
-
-      // NOTE: sets moment back to an empty object
-      CurrentMoment.set({});
+      vm.currentMoment = CurrentMoment.get().momentID;
     }
     
-    // pass sessionID
     function saveMemento(currentMemento) {
+      currentMemento.moments.push(vm.currentMoment);
+
       return dataservice.saveMemento(currentMemento)
         .then(function(mementoID) {
-          // NOTE: response is an object when received from server
-          // FIXME: need to grab the mementoID properly from the server response
           console.log('Memento ' + mementoID.data + ' has been saved.');
+
+          // NOTE: sets moment back to an empty object
+          CurrentMoment.set({});
+
           $state.go('memento', {ID: mementoID.data});
           
         })
@@ -40,6 +41,11 @@
           // savingError(err);
           console.error('There was an error saving memento:', err);
         });
+    }
+    
+    // NOTE: all this nav functionality are candidates for a nav service 
+    function goBack() {
+      return $ionicHistory.goBack()
     }
 
     function EmptyMemento() {
