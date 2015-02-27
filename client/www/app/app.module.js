@@ -51,6 +51,11 @@
       })
       .state('moment', {
         url: '/moment',
+        templateUrl: 'app/moment/moment.html',
+        controller: 'Moment as vm'
+      })
+      .state('momentCreate', {
+        url: '/momentcreate',
         templateUrl: 'app/moment/moment.create.html',
         controller: 'MomentCreate as vm'
       })
@@ -67,7 +72,7 @@
         })
 
       .state('mementoCreate', {
-        url: '/create',
+        url: '/mementocreate',
         templateUrl: 'app/memento-create/memento.create.html',
         controller: 'MementoCreate as vm'
       })
