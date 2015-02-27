@@ -32,7 +32,8 @@
           console.error('There was an error saving moment:', err);
         });
     }
-
+    
+    // NOTE: all this nav functionality are candidates for a nav service 
     function goBack() {
       return $ionicHistory.goBack()
     }
