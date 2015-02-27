@@ -1,0 +1,22 @@
+<ion-view>
+  <ion-nav-buttons side="primary">
+    <!-- NOTE: this should be the logo and open up a side menu of the users mementos -->
+    <!-- NOTE: it should also have the notification circle for new moments -->
+    <button class="button button-icon icon">Logo</button>
+  </ion-nav-buttons>
+  
+  <ion-nav-buttons side="secondary">
+    <!-- NOTE: this should open up a side menu for user settings -->
+    <button class="button button-icon icon ion-gear-a"></button>
+  </ion-nav-buttons>
+  
+  <ion-content>
+    <div>
+      <h1>Capture this Moment</h1>
+    </div>
+    <div>
+      <button on-tap="vm.createMoment()">+</button>
+    </div>
+  </ion-content>
+
+</ion-view>
