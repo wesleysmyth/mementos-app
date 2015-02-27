@@ -6,12 +6,14 @@
     .controller('Memento', Memento);
 
   /* @ngInject */
-  function Memento(dataservice, $stateParams, download) {
+  function Memento(dataservice, $stateParams, download, $state) {
     /*jshint validthis: true */
     var vm = this;
     vm.memento = {};
     vm.mementoID = Number($stateParams.ID);
     vm.getMemento = getMemento;
+    vm.goToMementos = goToMementos;
+    vm.goToMomentCreate = goToMomentCreate;
 
     activate();
     
@@ -36,6 +38,16 @@
         .catch(function(err) {
           console.error('There was an error getting memento', err);
         });
+    }
+    
+    // NOTE: all this nav functionality are candidates for a nav service 
+    function goToMementos () {
+      return $state.go('mementos')
+    }
+
+    // NOTE: all this nav functionality are candidates for a nav service 
+    function goToMomentCreate () {
+      return $state.go('moment')
     }
     
   }
