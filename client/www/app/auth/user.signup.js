@@ -12,7 +12,7 @@
       vm.signup = signup;
       vm.goBack = goBack;
 
-      //////////////////////////////////////
+      /////////////////////////////////////
 
       function signup(credentials) {
         if(credentials.password !== vm.repeatPassword) {

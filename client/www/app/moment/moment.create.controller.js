@@ -46,7 +46,7 @@
           console.error('There was an error saving moment:', err);
 
           // saveMoment again
-          vm.saveMoment(vm.currentMoment);
+          // vm.saveMoment(vm.currentMoment);
         });
     }
 
@@ -87,6 +87,19 @@
     
     // NOTE: all this nav and progress functionality should become part of a service library
     function goBack() {
+      var plus = document.getElementsByClassName('plusSign')[0];
+      
+      // fades in and antispins plus sign
+      setTimeout(function() {
+        plus.className = plus.className.split(' fadeout')[0] + ' fadein antispin';
+      }, 100);
+
+      // removes antispin class
+      setTimeout(function() {
+        var plus = document.getElementsByClassName('plusSign')[0];
+        plus.className = plus.className.split(' antispin')[0];
+      }, 400);
+
       return $ionicHistory.goBack()
     }
 

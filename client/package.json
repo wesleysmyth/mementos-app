@@ -45,6 +45,13 @@
     "sinon-chai": "^2.7.0"
   },
   "cordovaPlugins": [
-    "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker"
-  ]
+    "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker",
+    "org.apache.cordova.media-capture",
+    "org.apache.cordova.camera",
+    "org.apache.cordova.media"
+  ],
+  "dependencies": {
+    "node-sass": "^2.0.1"
+  }
 }
+

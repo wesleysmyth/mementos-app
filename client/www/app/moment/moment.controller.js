@@ -16,6 +16,17 @@
     ////////////////////////////////
 
     function createMoment() {
+      var plus = document.getElementsByClassName('plusSign')[0];
+
+      // spins and fades out plus sign
+      plus.className = plus.className.split(' fadein')[0] + ' fadeout spin';
+
+      // removes spin class
+      setTimeout(function() {
+        var plus = document.getElementsByClassName('plusSign')[0];
+        plus.className = plus.className.split(' spin')[0];
+      }, 400);
+
       $state.go('momentCreate');
     }
 

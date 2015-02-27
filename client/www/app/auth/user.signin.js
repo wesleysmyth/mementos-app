@@ -10,7 +10,7 @@
       vm.signin = signin;
       vm.goBack = goBack;
 
-      //////////////////////////////////////
+      /////////////////////////////////////
 
       function signin(credentials) {
         return dataservice.signin(credentials)
