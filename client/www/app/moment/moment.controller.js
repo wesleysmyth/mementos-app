@@ -10,6 +10,7 @@
     /*jshint validthis: true */
     var vm = this;
     vm.createMoment = createMoment;
+    vm.goToMementos = goToMementos;
 
     animate();
 
@@ -21,6 +22,11 @@
 
     function createMoment() {
       $state.go('momentCreate');
+    }
+
+    // NOTE: all this nav functionality are candidates for a nav service 
+    function goToMementos () {
+      return $state.go('mementos')
     }
 
   }
