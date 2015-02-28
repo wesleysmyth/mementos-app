@@ -42,11 +42,6 @@
           console.error('There was an error saving memento:', err);
         });
     }
-    
-    // NOTE: all this nav functionality are candidates for a nav service 
-    function goBack() {
-      return $ionicHistory.goBack()
-    }
 
     function EmptyMemento() {
       this.title = '';
@@ -59,5 +54,11 @@
       };
       this.moments = [];
     }
+    
+    // NOTE: all this nav and progress functionality should become part of a service library
+    function goBack() {
+      return $ionicHistory.goBack()
+    }
+
   }
 })();
