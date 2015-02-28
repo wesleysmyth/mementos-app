@@ -18,7 +18,8 @@
         <input ng-pattern="{{ vm.credentials.password }}" type="password" ng-model="vm.repeatPassword" placeholder="repeat password">
       </label>
     </div>
-
+    
+    <!-- FIXME: need to alert for previously created users or incorrect entry -->
     <div class="padding">
       <button class="button button-block button-positive" on-tap="vm.signup(vm.credentials)">
         Sign Up
