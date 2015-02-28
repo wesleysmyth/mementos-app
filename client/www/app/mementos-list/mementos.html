@@ -3,11 +3,11 @@
 
   <ion-nav-buttons side="secondary">
     <!-- NOTE: this should be our icon for a moment -->
-    <button ng-hide="vm.createMode" on-tap="vm.goToMomentCreate()" class="button button-icon icon ion-plus-circled"></button>
+    <button ng-hide="" on-tap="vm.goToMomentCreate()" class="button button-icon icon ion-plus-circled"></button>
   </ion-nav-buttons>
 
   <ion-content>
-    <ion-item ng-hide="!vm.createMode" href="#/mementocreate"> Create Memento </ion-item>
+    <ion-item ng-hide="" href="#/mementocreate"> Create Memento </ion-item>
 
     <div class="item item-divider"> Created </div>
     
@@ -17,7 +17,7 @@
       <i class="icon ion-chevron-right"></i>
     </ion-item>
     
-    <div ng-hide="vm.createMode">
+    <div ng-hide="">
       <div class="item item-divider"> Received </div>
       
       <ion-item ng-repeat="memento in vm.mementos.received" class="item-icon-right" href="#/mementos/{{memento.ID}}">
