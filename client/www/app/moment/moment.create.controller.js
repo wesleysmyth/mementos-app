@@ -6,36 +6,42 @@
     .controller('MomentCreate', MomentCreate);
 
   /* @ngInject */
-  function MomentCreate($state, dataservice, CurrentMoment, $ionicHistory) {
+  function MomentCreate($state, dataservice, CurrentMoment, $ionicHistory, $ionicLoading) {
     
     /*jshint validthis: true */
     var vm = this;    
     vm.saveMoment = saveMoment;
     vm.currentMoment = new EmptyMoment();
     vm.goBack = goBack;
+    vm.showSaveProgress = showSaveProgress;
+    vm.hideSaveProgress = hideSaveProgress;
       
     //////////////////////////////////////////////////
 
     function saveMoment(currentMoment) {
-      // TODO: Show loading screen when the moment is saving;
-      // savingInProgress();
+      // opens saving in progress window
+      vm.showSaveProgress();
 
       dataservice.saveMoment(currentMoment)
         .then(function(momentID) {
           console.log('Moment ' + momentID.data + ' has been saved');
+          
+          // saves moment ID
           CurrentMoment.set({momentID: momentID.data});
+          
+          // closes saving in progress window and send user to mementos view
           $state.go('mementos');
+          vm.hideSaveProgress();
+
+          // resets currentMoment
+          vm.currentMoment = new EmptyMoment();
         })
         .catch(function(err) {
-          // TODO: Connection errors, DB errors.
-          // savingError(err);
           console.error('There was an error saving moment:', err);
+
+          // saveMoment again
+          vm.saveMoment(vm.currentMoment);
         });
-    }
-    
-    // NOTE: all this nav functionality are candidates for a nav service 
-    function goBack() {
-      return $ionicHistory.goBack()
     }
 
     function EmptyMoment() {
@@ -50,6 +56,21 @@
           place: ''
         }
       };
+    }
+    
+    // NOTE: all this nav and progress functionality should become part of a service library
+    function goBack() {
+      return $ionicHistory.goBack()
+    }
+
+    function showSaveProgress() {
+      return $ionicLoading.show({
+        template: 'Saving moment...'
+      });
+    }
+
+    function hideSaveProgress() {
+      return $ionicLoading.hide();
     }
 
   }
