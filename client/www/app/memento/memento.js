@@ -6,7 +6,7 @@
     .controller('Memento', Memento);
 
   /* @ngInject */
-  function Memento(dataservice, $stateParams, download, $state) {
+  function Memento(dataservice, $stateParams, download, $state, $ionicLoading, $ionicHistory) {
     /*jshint validthis: true */
     var vm = this;
     vm.memento = {};
@@ -14,40 +14,56 @@
     vm.getMemento = getMemento;
     vm.goToMementos = goToMementos;
     vm.goToMomentCreate = goToMomentCreate;
+    vm.showLoadProgress = showLoadProgress;
+    vm.hideLoadProgress = hideLoadProgress;
 
     activate();
     
     ////////////////////////////////////////////////////////////
 
     function activate() {
-      return getMemento(vm.mementoID)
-        .then(function(data) {
-          console.log('Successful activating memento')
-        })
-        .catch(function(err) {
-          console.error('There was an error activating memento', err)
-        });
+      getMemento(vm.mementoID)
     }
     
     function getMemento(ID) {
+      // opens load in progress window
+      vm.showLoadProgress();
+
       return dataservice.getMemento(ID)
         .then(function(memento) {
           console.log('Successful getting memento');
+
+          // closes load in progress window
+          vm.hideLoadProgress();
+          
           vm.memento = memento.data;
         })
         .catch(function(err) {
           console.error('There was an error getting memento', err);
+
+          // getMemento again
+          vm.getMemento(vm.mementoID);
         });
     }
     
-    // NOTE: all this nav functionality are candidates for a nav service 
-    function goToMementos () {
-      return $state.go('mementos')
+    // NOTE: all this nav and progress functionality should become part of a service library
+    function showLoadProgress() {
+      return $ionicLoading.show({
+        template: 'Loading memento...'
+      });
     }
 
-    // NOTE: all this nav functionality are candidates for a nav service 
+    function hideLoadProgress() {
+      return $ionicLoading.hide();
+    }
+    
+    function goToMementos () {
+      console.log($ionicHistory);
+      $state.go('mementos')
+    }
+
     function goToMomentCreate () {
-      return $state.go('moment')
+      $state.go('moment')
     }
     
   }
