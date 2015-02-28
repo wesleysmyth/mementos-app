@@ -9,7 +9,7 @@
   
   /* @ngInject */ 
   function dataservice($http, $q, upload, CurrentUser) {
-    var hostURL = 'https://mementos.ngrok.com';
+    var hostURL = 'https://mementosio.herokuapp.com';
 
     var service = {
       getMementos: getMementos,

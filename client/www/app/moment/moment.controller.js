@@ -6,11 +6,12 @@
     .controller('Moment', Moment);
 
   /* @ngInject */
-  function Moment($state) {
+  function Moment($state, logout) {
     /*jshint validthis: true */
     var vm = this;
     vm.createMoment = createMoment;
     vm.goToMementos = goToMementos;
+    vm.logoutUser = logoutUser;
 
     animate();
 
@@ -26,7 +27,11 @@
 
     // NOTE: all this nav functionality are candidates for a nav service 
     function goToMementos () {
-      return $state.go('mementos')
+      $state.go('mementos')
+    }
+
+    function logoutUser() {
+      logout.show()
     }
 
   }
