@@ -11,7 +11,7 @@
     var vm = this;
     vm.title = 'Create Memento';
     vm.currentMemento = new EmptyMemento();
-    vm.currentMoment = {};
+    vm.momentID = {};
     vm.saveMemento = saveMemento;
     vm.goBack = goBack;
 
@@ -20,11 +20,11 @@
     ////////////////////////////////////////////////////////////
 
     function activate() {
-      vm.currentMoment = CurrentMoment.get().momentID;
+      vm.momentID = CurrentMoment.get().momentID;
     }
     
     function saveMemento(currentMemento) {
-      currentMemento.moments.push(vm.currentMoment);
+      currentMemento.moments.push(vm.momentID);
 
       return dataservice.saveMemento(currentMemento)
         .then(function(mementoID) {
@@ -34,19 +34,14 @@
           CurrentMoment.set({});
 
           $state.go('memento', {ID: mementoID.data});
-          
         })
         .catch(function(err) {
-          // TODO: Connection errors, DB errors.
-          // savingError(err);
           console.error('There was an error saving memento:', err);
         });
     }
 
     function EmptyMemento() {
       this.title = '';
-      /*this.owner = 'User1'; */
-      /*this.authors = [];*/
       this.recipients = [];
       this.options = {
         'public'  : false,
