@@ -62,13 +62,13 @@
       .state('mementos', {
         url: '/mementos',
         templateUrl: 'app/mementos-list/mementos.html',
-        controller: 'Mementos as vm',
+        controller: 'Mementos as vm'
       })
         // nested state
         .state('memento', {
           url: '/mementos/:ID',
           templateUrl: 'app/memento/memento.html',
-          controller: 'Memento as vm',
+          controller: 'Memento as vm'
         })
 
       .state('mementoCreate', {
