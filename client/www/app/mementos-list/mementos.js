@@ -61,11 +61,11 @@
           .then(function(data) {
             console.log('Memento ' + mementoID + ' has been updated');
             
-            // go to updated memento
-            $state.go('memento', {ID: mementoID});
-            
             // set current moment back to an empty object
             CurrentMoment.set({});
+
+            // go to updated memento
+            $state.go('memento', {ID: mementoID});
           })
           .catch(function(err) {
             console.error('There was an error updating the memento:', err);
