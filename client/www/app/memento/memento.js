@@ -58,12 +58,11 @@
     }
     
     function goToMementos () {
-      console.log($ionicHistory);
-      $state.go('mementos')
+      $state.go('mementos');
     }
 
     function goToMomentCreate () {
-      $state.go('moment')
+      $state.go('moment');
     }
     
   }
