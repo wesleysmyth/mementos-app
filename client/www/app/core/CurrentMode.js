@@ -3,17 +3,17 @@
 
   angular
     .module('app.core')
-    .factory('CurrentUser', CurrentUser);
+    .factory('CurrentMode', CurrentMode);
 
-  function CurrentUser() {
-    var user = {}
+  function CurrentMode() {
+    var mode = {mode: false}
 
     return {
       set: function(obj) {
-        user = angular.copy(obj);
+        mode = angular.copy(obj);
       },
       get: function() {
-        return angular.copy(user);
+        return angular.copy(moment);
       }
     };
   }
