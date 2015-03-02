@@ -6,7 +6,6 @@
     .factory('dataservice', dataservice);
   
   /*FIXME: makesure ngInject is working during minification*/
-  
   /* @ngInject */ 
   function dataservice($http, $q, upload, CurrentUser) {
     var hostURL = 'https://mementosio.herokuapp.com';
@@ -17,7 +16,6 @@
       updateMemento: updateMemento,
       saveMoment: saveMoment,
       saveMemento: saveMemento,
-      /*NOTE: should move these to seperate service*/
       signup: signup,
       signin: signin
     };
@@ -26,7 +24,6 @@
     
     ///////////////////////////////////////////////////////////////
 
-    // NOTE: server will only return mementos associated with user
     function getMementos() {
       // NOTE: this is manual, and could be set up as an httpInterceptor
       var sessionID = CurrentUser.get().sessionID;
@@ -89,7 +86,6 @@
         });    
     }
     
-    // gets memento
     function getMemento(ID) {
       // NOTE: this is manual, and could be set up as an httpInterceptor
       var sessionID = CurrentUser.get().sessionID;
@@ -112,7 +108,6 @@
         });
     }
     
-    // updates existing memento
     function updateMemento(mementoID, momentID) {
       // NOTE: this is manual, and could be set up as an httpInterceptor
       var sessionID = CurrentUser.get().sessionID;

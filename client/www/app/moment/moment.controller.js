@@ -13,13 +13,7 @@
     vm.goToMementos = goToMementos;
     vm.logoutUser = logoutUser;
 
-    animate();
-
     ////////////////////////////////
-    
-    function animate() {
-      // NOTE: use this to fetch update for notification circle
-    }
 
     function createMoment() {
       $state.go('momentCreate');

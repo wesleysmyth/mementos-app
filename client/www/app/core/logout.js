@@ -1,4 +1,3 @@
-/*NOTE: may be able to use Amazon SDK*/
 (function() {
   'use strict';
 
