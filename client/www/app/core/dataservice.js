@@ -86,13 +86,13 @@
         });    
     }
     
-    function getMemento(ID) {
+    function getMemento(ID, type) {
       // NOTE: this is manual, and could be set up as an httpInterceptor
       var sessionID = CurrentUser.get().sessionID;
 
       return $http({
         method: 'GET',
-        url: hostURL + '/api/1/mementos/' + ID,
+        url: hostURL + '/api/1/mementos/' + ID + '/' + type,
         headers: {
           'Content-Type': 'application/json',
           'sessionID': sessionID

@@ -28,7 +28,8 @@
     function getMemento(ID) {
       // opens load in progress window
       vm.showLoadProgress();
-
+      
+      // FIXME: need to pass type (author or recipient for this API call)
       return dataservice.getMemento(ID)
         .then(function(memento) {
           console.log('Successful getting memento');
