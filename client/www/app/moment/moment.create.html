@@ -24,8 +24,12 @@
     </div>
  
     <!-- // Allow users to create a new item if editable -->
-    <new-item moment="vm.currentMoment"></new-item>    
+    <new-item moment="vm.currentMoment"></new-item>
 
+    <button class="button button-outline button-block button-positive" on-tap="vm.showDatePicker()">date</button>
+    {{vm.date}}
+    <button class="button button-outline button-block button-positive" on-tap="vm.showTimePicker()">time</button>
+    {{vm.time}}
 
     <button class="button button-outline button-block button-positive moment-save" on-tap="vm.saveMoment(vm.currentMoment)">Save</button>
 

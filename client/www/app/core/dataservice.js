@@ -8,7 +8,7 @@
   /*FIXME: makesure ngInject is working during minification*/
   /* @ngInject */ 
   function dataservice($http, $q, upload, CurrentUser) {
-    var hostURL = 'https://40643827.ngrok.com';
+    var hostURL = 'https://mementosio.herokuapp.com';
 
     var service = {
       getMementos: getMementos,

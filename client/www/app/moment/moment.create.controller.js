@@ -6,15 +6,19 @@
     .controller('MomentCreate', MomentCreate);
 
   /* @ngInject */
-  function MomentCreate($state, dataservice, CurrentMoment, $ionicHistory, $ionicLoading) {
+  function MomentCreate($state, dataservice, CurrentMoment, $ionicHistory, $ionicLoading, DatePicker) {
     
     /*jshint validthis: true */
-    var vm = this;    
+    var vm = this;
     vm.saveMoment = saveMoment;
     vm.currentMoment = new EmptyMoment();
     vm.goBack = goBack;
     vm.showSaveProgress = showSaveProgress;
     vm.hideSaveProgress = hideSaveProgress;
+    vm.showDatePicker = showDatePicker;
+    vm.showTimePicker = showTimePicker;
+    vm.date;
+    vm.time;
       
     //////////////////////////////////////////////////
 
@@ -56,6 +60,26 @@
           place: ''
         }
       };
+    }
+
+    function showDatePicker() {
+      DatePicker.showDatePicker()
+        .then(function(date) {
+          vm.date = date;
+        })
+        .catch(function(err) {
+          console.error(err)
+        })
+    }
+
+    function showTimePicker() {
+      DatePicker.showTimePicker()
+        .then(function(time) {
+          vm.time = time;
+        })
+        .catch(function(err) {
+          console.error(err)
+        })
     }
     
     // NOTE: all this nav and progress functionality should become part of a service library
