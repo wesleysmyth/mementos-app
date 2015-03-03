@@ -14,7 +14,7 @@
 
       function signin(credentials) {
         return dataservice.signin(credentials)
-          .then(function(res) {            
+          .then(function(res) {        
             CurrentUser.set({
               sessionID: res.data.sessionID, 
               userID: res.data.userID
