@@ -31,7 +31,7 @@
     <button class="button button-outline button-block button-positive" on-tap="vm.showTimePicker()">time</button>
     {{vm.time}}
 
-    <button class="button button-outline button-block button-positive moment-save" on-tap="vm.saveMoment(vm.currentMoment)">Save</button>
+    <button ng-disabled="!vm.currentMoment.title || !vm.currentMoment.content[0] || !vm.date || !vm.time" class="button button-outline button-block button-positive moment-save" on-tap="vm.saveMoment(vm.currentMoment)">Save</button>
 
   </ion-content>
 </ion-view>

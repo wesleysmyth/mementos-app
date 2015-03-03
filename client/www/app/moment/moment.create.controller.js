@@ -19,6 +19,8 @@
     vm.showTimePicker = showTimePicker;
     vm.date;
     vm.time;
+
+    console.log(vm.currentMoment);
       
     //////////////////////////////////////////////////
 
@@ -61,11 +63,12 @@
         }
       };
     }
-
+    
+    // FIXME: need to calculate precise date and time in milliseconds to pass to releaseDate
     function showDatePicker() {
       DatePicker.showDatePicker()
         .then(function(date) {
-          vm.date = date;
+          vm.date = date.getTime();
         })
         .catch(function(err) {
           console.error(err)
@@ -75,7 +78,7 @@
     function showTimePicker() {
       DatePicker.showTimePicker()
         .then(function(time) {
-          vm.time = time;
+          vm.time = time.getTime();
         })
         .catch(function(err) {
           console.error(err)
