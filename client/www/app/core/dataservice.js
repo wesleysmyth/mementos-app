@@ -8,7 +8,7 @@
   /*FIXME: makesure ngInject is working during minification*/
   /* @ngInject */ 
   function dataservice($http, $q, upload, CurrentUser) {
-    var hostURL = 'https://mementosio.herokuapp.com';
+    var hostURL = 'https://40643827.ngrok.com';
 
     var service = {
       getMementos: getMementos,
@@ -86,13 +86,13 @@
         });    
     }
     
-    function getMemento(ID, type) {
+    function getMemento(ID, viewer) {
       // NOTE: this is manual, and could be set up as an httpInterceptor
       var sessionID = CurrentUser.get().sessionID;
 
       return $http({
         method: 'GET',
-        url: hostURL + '/api/1/mementos/' + ID + '/' + type,
+        url: hostURL + '/api/1/mementos/' + ID + '/' + viewer,
         headers: {
           'Content-Type': 'application/json',
           'sessionID': sessionID

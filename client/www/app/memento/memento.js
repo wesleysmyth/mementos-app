@@ -6,11 +6,12 @@
     .controller('Memento', Memento);
 
   /* @ngInject */
-  function Memento(dataservice, $stateParams, download, $state, $ionicLoading, $ionicHistory) {
+  function Memento(dataservice, $stateParams, download, $state, $ionicLoading, $ionicHistory, CurrentViewer) {
     /*jshint validthis: true */
     var vm = this;
     vm.memento = {};
     vm.mementoID = Number($stateParams.ID);
+    vm.viewer = CurrentViewer.get().viewer;
     vm.getMemento = getMemento;
     vm.goToMementos = goToMementos;
     vm.goToMomentCreate = goToMomentCreate;
@@ -28,9 +29,8 @@
     function getMemento(ID) {
       // opens load in progress window
       vm.showLoadProgress();
-      
-      // FIXME: need to pass type (author or recipient for this API call)
-      return dataservice.getMemento(ID)
+        
+      return dataservice.getMemento(ID, vm.viewer)
         .then(function(memento) {
           console.log('Successful getting memento');
 
@@ -38,6 +38,7 @@
           vm.hideLoadProgress();
           
           vm.memento = memento.data;
+          console.log(vm.memento);
         })
         .catch(function(err) {
           console.error('There was an error getting memento', err);
