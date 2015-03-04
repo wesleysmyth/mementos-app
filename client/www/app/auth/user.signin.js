@@ -4,7 +4,7 @@
     .controller('UserSignin', UserSignin);
 
     /* @ngInject */
-    function UserSignin(dataservice, $state, CurrentUser, Notifications, $ionicHistory) {
+    function UserSignin(dataservice, $state, CurrentUser, Notifications, $ionicHistory, Alerts) {
       vm = this;
       vm.credentials = {};      
       vm.signin = signin;
@@ -26,6 +26,11 @@
           })
           .catch(function(err) {
             console.error(err);
+            if(err.data === 'Invalid username or password'){
+              Alerts.showIncorrectPassword();
+            } else {
+              Alerts.showUserDoesNotExist();
+            }
           });
       }
 
