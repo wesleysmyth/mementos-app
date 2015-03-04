@@ -38,7 +38,6 @@
           vm.hideLoadProgress();
           
           vm.memento = memento.data;
-          console.log(vm.memento);
         })
         .catch(function(err) {
           console.error('There was an error getting memento', err);
