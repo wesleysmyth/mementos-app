@@ -54,6 +54,8 @@
       var today = new Date();
       this.title = '';
       this.content = []; 
+
+      // use selected dates and convert to milliseconds 
       this.releaseDate = today.setFullYear(today.getFullYear() + 1);
       this.meta = {
         location: {
@@ -68,7 +70,9 @@
     function showDatePicker() {
       DatePicker.showDatePicker()
         .then(function(date) {
-          vm.date = date.getTime();
+          console.log('date from showDatePicker', date);
+          vm.date = date;
+          console.log('vm.date', vm.date);
         })
         .catch(function(err) {
           console.error(err)
@@ -78,7 +82,9 @@
     function showTimePicker() {
       DatePicker.showTimePicker()
         .then(function(time) {
-          vm.time = time.getTime();
+          console.log('time from showTimePicker', time);
+          vm.time = time;
+          console.log('vm.time', vm.time);
         })
         .catch(function(err) {
           console.error(err)

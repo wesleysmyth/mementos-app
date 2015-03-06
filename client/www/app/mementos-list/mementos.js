@@ -10,7 +10,7 @@
     /*jshint validthis: true */
     var vm = this;
     vm.mementos = {};
-    vm.title = 'Mementos';
+    vm.title = '';
     vm.addMoment = addMoment;
     vm.getMementos = getMementos;
     vm.setViewer = setViewer;
